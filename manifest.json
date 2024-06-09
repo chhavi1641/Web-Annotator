@@ -1,0 +1,44 @@
+{
+    "manifest_version": 3,
+    "name": "Web Annotator",
+    "version": "1.0",
+    "description": "Annotate and highlight content on any webpage with customizable options.",
+    "permissions": [
+        "storage",
+        "activeTab",
+        "contextMenus",
+        "tabs",
+        "scripting"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "action": {
+        "default_popup": "popup.html"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "content.js"
+            ]
+        }
+    ],
+    "options_page": "options.html",
+    "commands": {
+        "highlight": {
+            "suggested_key": {
+                "default": "Ctrl+Shift+H"
+            },
+            "description": "Highlight selected text"
+        },
+        "add_note": {
+            "suggested_key": {
+                "default": "Ctrl+Shift+N"
+            },
+            "description": "Add note to selected text"
+        }
+    }
+}
